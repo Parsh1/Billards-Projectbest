@@ -213,5 +213,15 @@ int main(int argc, char* argv[]) {
 			printf("You have a mismatched number of pixels vs the size")
 		}
 		// Check the number of elements
+	// Miguels function calling:
+	unsigned int *Pix = NULL; // Fichier ou se stockent tous les pixels
+	if (read_all_pixels(fp, W, H, &Pix) != 0) {
+		fclose(fp);
+		return 1;
+	}
+	fclose(fp); // Imporant: Je ferme le fichier pixmap.bin puisque tout est lu est stocké
+
+
+	// Après la partie de Bogdan, important: il faut faire free(Pix) !!!
 }
 
