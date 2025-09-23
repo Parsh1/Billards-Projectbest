@@ -26,9 +26,10 @@ int main(int argc, char* argv[]) {
 	}
 
 	int Table[2];
-	(fread(Table, sizeof(int), 2, fp)
+	size_t rd = 0;
+	(rd = fread(Table, sizeof(int), 2, fp)
 	// Add the table from memory allocation here instead but using this tentatively
-	if (fp != 2) {	// Checks to make sure it has read 2 elements 
+	if (rd != 2) {	// Checks to make sure it has read 2 elements 
 		perror ("Failed to read the width and length");  // Error code
 		fclose(fp);										// Closes file to do further checks before proceeding however, 
 		return 1;										// this can be combined with the next step later if slow
@@ -36,7 +37,7 @@ int main(int argc, char* argv[]) {
 	int Largeur = Table [0];			// Replace with the 0th entry of the malloc table we make
 	int Hauteur = Table [1];			
 
-		if (Largeur > 1000 || Largeur < 100 || Hauteur > 100 || Hauteur < 100) {
+		if (Largeur > 1000 || Largeur < 100 || Hauteur > 1000 || Hauteur < 100) {
 			printf (" The bounds provided are invalid so the program cannot continue");
 			exit(1);
 		}
