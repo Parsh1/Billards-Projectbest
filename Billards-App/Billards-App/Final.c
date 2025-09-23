@@ -4,7 +4,6 @@
 #include<stdio.h>
 
 #define score_min 15
-#define ball_size 13
 
 #define GET_R(px) (unsigned int)(((px) & 0x00FF0000u) >> 16)
 #define GET_G(px) (unsigned int)(((px) & 0x0000FF00u) >> 8)
