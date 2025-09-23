@@ -15,7 +15,7 @@ typedef struct { int r, y, w; } scores;
 scores check_score(int x, int y, const unsigned int *a, int largeur,
 	int Rrmin, int Rrmax, int Rgmin, int Rgmax, int Rbmin, int Rbmax,
 	int Yrmin, int Yrmax, int Ygmin, int Ygmax, int Ybmin, int Ybmax,
-	int Wrmin, int Wrmax, int Wgmin, int Wgmax, int Wbmin, int Wbmax) {
+	int Wrmin, int Wrmax, int Wgmin, int Wgmax, int Wbmin, int Wbmax, int ball_size) {
 
 	scores s= { 0,0,0 };
 	int r = 0;
@@ -42,7 +42,7 @@ void etape_4(int largeur, const unsigned int* a, int Lmin, int Lmax, int Cmin, i
 	int Rrmin, int Rrmax, int Rgmin, int Rgmax, int Rbmin, int Rbmax,
 	int Yrmin, int Yrmax, int Ygmin, int Ygmax, int Ybmin, int Ybmax,
 	int Wrmin, int Wrmax, int Wgmin, int Wgmax, int Wbmin, int Wbmax,
-	const char* posPath) {
+	const char* posPath,int ball_size) {
 
 	int red[3] = { 0,0,0 };
 	int yellow[3] = { 0,0,0 };
@@ -54,7 +54,7 @@ void etape_4(int largeur, const unsigned int* a, int Lmin, int Lmax, int Cmin, i
 			scores score = check_score(i,j,a, largeur, 
 				 Rrmin, Rrmax, Rgmin, Rgmax, Rbmin, Rbmax,
 				 Yrmin, Yrmax, Ygmin, Ygmax, Ybmin, Ybmax,
-				 Wrmin, Wrmax, Wgmin, Wgmax, Wbmin, Wbmax);
+				 Wrmin, Wrmax, Wgmin, Wgmax, Wbmin, Wbmax, ball_size);
 
 			if (score.r > red[2]) {
 				red[2] = score.r;
@@ -221,7 +221,13 @@ int main(int argc, char* argv[]) {
 	}
 	fclose(fp); // Imporant: Je ferme le fichier pixmap.bin puisque tout est lu est stocké
 
+ etape_4(Largeur,Pix,argv[3],argv[4],argv[5],argv[6],argv[7],argv[8],argv[9],argv[10],argv[11],argv[12],argv[13],argv[14],argv[15],argv[16],
+         argv[17],argv[18],argv[19],argv[20],argv[21],argv[22],argv[23],argv[24],argv[2],argv[31]);
+
+free(Pix);
+
 
 	// Après la partie de Bogdan, important: il faut faire free(Pix) !!!
+
 }
 
