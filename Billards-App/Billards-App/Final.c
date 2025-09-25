@@ -167,7 +167,7 @@ Also:
 
 int main(int argc, char* argv[]) {
 
-	if (argc != 30) {
+	if (argc != 32) {
 		printf("Expected to see 29 parameters instead there are %d\n", argc - 1);
 		exit(1);
 	}
