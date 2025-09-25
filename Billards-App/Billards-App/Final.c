@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdint.h>
-#include<stdio.h>
 
 #define score_min 15
 
@@ -174,7 +173,12 @@ int main(int argc, char* argv[]) {
 
 	// The above makes sure we received the correct number of lines for parameters
 
-	}
+	int argv[29] = Ball_Diameter;
+
+if ( Ball_Diameter > 20 || Ball_Diameter < 5) {
+	printf("The ball diameter is wrong impossible to continue");
+	exit(1);
+}
 			
 	FILE *fp = fopen("Pixmap.bin", "rb") // Reads file and puts the file reader in binary mode 
 		if (!fp) {						// Makes sure file is there 
