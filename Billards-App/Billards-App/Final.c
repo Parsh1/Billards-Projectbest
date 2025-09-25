@@ -174,8 +174,8 @@ int main(int argc, char* argv[]) {
 
 
 	int values[28];
-for (int i = 1; i < 29; i++) {
-	values[i - 1] = atoi(argv[1]);
+for (int i = 1; i < 30; i++) {
+	values[i - 1] = atoi(argv[i]);
 }
 if ( values[28] > 20 || values[28] < 5) { 
 	printf("The ball diameter is wrong impossible to continue");
