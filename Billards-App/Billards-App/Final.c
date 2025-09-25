@@ -41,7 +41,7 @@ void etape_4(int largeur, const unsigned int* a, int Lmin, int Lmax, int Cmin, i
 	int Rrmin, int Rrmax, int Rgmin, int Rgmax, int Rbmin, int Rbmax,
 	int Yrmin, int Yrmax, int Ygmin, int Ygmax, int Ybmin, int Ybmax,
 	int Wrmin, int Wrmax, int Wgmin, int Wgmax, int Wbmin, int Wbmax,
-	const char* posPath,int ball_size) {
+	int ball_size) {
 
 	int red[3] = { 0,0,0 };
 	int yellow[3] = { 0,0,0 };
@@ -95,10 +95,9 @@ void etape_4(int largeur, const unsigned int* a, int Lmin, int Lmax, int Cmin, i
 
 	}
 
-	
-	FILE* fp = fopen(posPath, "w");
+	FILE* fp = fopen("Pos.txt", "w");   // <-- was fopen(posPath, "w")
 	if (!fp) {
-		perror(posPath);
+		perror("Pos.txt");              // <-- was perror(posPath)
 		return;
 	}
 
