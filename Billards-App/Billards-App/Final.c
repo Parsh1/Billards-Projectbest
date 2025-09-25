@@ -215,8 +215,8 @@ int main(int argc, char* argv[]) {
 	}
 	fclose(fp); // Imporant: Je ferme le fichier pixmap.bin puisque tout est lu et stocké
 
- etape_4(Largeur,Pix,argv[3],argv[4],argv[5],argv[6],argv[7],argv[8],argv[9],argv[10],argv[11],argv[12],argv[13],argv[14],argv[15],argv[16],
-         argv[17],argv[18],argv[19],argv[20],argv[21],argv[22],argv[23],argv[24],argv[2],argv[31]);
+etape_4(Largeur,Pix,argv[1],argv[2],argv[3],argv[4],argv[5],argv[6],argv[7],argv[8],argv[9],argv[10],argv[11],argv[12],argv[13],argv[14],
+         argv[15],argv[16],argv[17],argv[18],argv[19],argv[20],argv[21],argv[22],argv[29]);
 
 free(Pix);
 
