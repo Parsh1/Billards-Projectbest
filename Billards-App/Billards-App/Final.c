@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdint.h>
-#include<stdio.h>
 
 #define score_min 15
 
@@ -41,7 +40,7 @@ void etape_4(int largeur, const unsigned int* a, int Lmin, int Lmax, int Cmin, i
 	int Rrmin, int Rrmax, int Rgmin, int Rgmax, int Rbmin, int Rbmax,
 	int Yrmin, int Yrmax, int Ygmin, int Ygmax, int Ybmin, int Ybmax,
 	int Wrmin, int Wrmax, int Wgmin, int Wgmax, int Wbmin, int Wbmax,
-	const char* posPath,int ball_size) {
+	int ball_size) {
 
 	int red[3] = { 0,0,0 };
 	int yellow[3] = { 0,0,0 };
@@ -95,10 +94,9 @@ void etape_4(int largeur, const unsigned int* a, int Lmin, int Lmax, int Cmin, i
 
 	}
 
-	
-	FILE* fp = fopen(posPath, "w");
+	FILE* fp = fopen("Pos.txt", "w");   // <-- was fopen(posPath, "w")
 	if (!fp) {
-		perror(posPath);
+		perror("Pos.txt");              // <-- was perror(posPath)
 		return;
 	}
 
@@ -174,22 +172,26 @@ int main(int argc, char* argv[]) {
 
 	// The above makes sure we received the correct number of lines for parameters
 
-	}
+
+	int values[28];
+for (int i = 1; i < 29; i++) {
+	values[i - 1] = atoi(argv[1]);
+}
+
+if ( values[28] > 20 || values[28] < 5) {
+	printf("The ball diameter is wrong impossible to continue");
+	exit(1);
+}
+
 			
-	FILE *fp = fopen("Pixmap.bin", "rb") // Reads file and puts the file reader in binary mode 
+FILE* fp = fopen("Pixmap.bin", "rb"); // Reads file and puts the file reader in binary mode 
 		if (!fp) {						// Makes sure file is there 
 			perror("File open failed");	// Message to tell us where the error is
 				return 1;
 		}
 
-	int Table[2];						// Add the table from memory allocation here instead, but using this tentatively
-	if ((fread(Table, sizeof(int), 2, fp) != 2) {	// Checks to make sure it has read 2 elements 
-		perror ("Failed to read the width and length");		// Error code
-		fclose(fp);										// Closes file to do further checks before proceeding, however, 
-		return 1;										// this can be combined with the next step later if slow
-	}
-	int Largeur = Table [0];			// Replace with the 0th entry of the malloc table we make
-	int Hauteur = Table [1];			
+	int Largeur = values[0];			// Replace with the 0th entry of the malloc table we make
+	int Hauteur = values[1];			
 
 		if (Largeur > 1000 ||  Largeur < 100 || Hauteur > 1000 || Hauteur < 100) {
 			printf (" The bounds provided are invalid, so the program cannot continue");
@@ -199,7 +201,7 @@ int main(int argc, char* argv[]) {
 		// The above lines check the bounds for the height and width
 
 		long size = ftell(fp);
-		int rectangle = Largeur * Hauteur // To see the product of width vs height
+		int rectangle = Largeur * Hauteur; // To see the product of width vs height
 			if (size < (4 * rectangle)) {
 				printf("You have too little number of pixels vs the size so the program will end");
 				exit(1);
@@ -216,8 +218,9 @@ int main(int argc, char* argv[]) {
 	}
 	fclose(fp); // Imporant: Je ferme le fichier pixmap.bin puisque tout est lu et stocké
 
- etape_4(Largeur,Pix,argv[3],argv[4],argv[5],argv[6],argv[7],argv[8],argv[9],argv[10],argv[11],argv[12],argv[13],argv[14],argv[15],argv[16],
-         argv[17],argv[18],argv[19],argv[20],argv[21],argv[22],argv[23],argv[24],argv[2],argv[31]);
+etape_4(Largeur,Pix,values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7], 
+	values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15], 
+	values[16], values[17], values[18], values[19], values[20], values[21], values[28]);
 
 free(Pix);
 
