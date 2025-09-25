@@ -221,8 +221,5 @@ int main(int argc, char* argv[]) {
 
 free(Pix);
 
-
-	// Après la partie de Bogdan, important: il faut faire free(Pix) !!!
-
 }
 
