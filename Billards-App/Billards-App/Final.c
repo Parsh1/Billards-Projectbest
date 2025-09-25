@@ -191,7 +191,7 @@ int main(int argc, char* argv[]) {
 	int Largeur = Table [0];			// Replace with the 0th entry of the malloc table we make
 	int Hauteur = Table [1];			
 
-		if (Largeur > 1000 ||  Largeur <= 100 || Hauteur > 1000 || Hauteur <= 100) {
+		if (Largeur > 1000 ||  Largeur < 100 || Hauteur > 1000 || Hauteur < 100) {
 			printf (" The bounds provided are invalid, so the program cannot continue");
 			exit(1);
 		}
