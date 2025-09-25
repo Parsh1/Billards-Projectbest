@@ -199,10 +199,15 @@ int main(int argc, char* argv[]) {
 		// The above lines check the bounds for the height and width
 
 		long size = ftell(fp);
-		if (size != (4 * Largeur * Hauteur)) {
-			printf("You have a mismatched number of pixels vs the size")
-		}
-		// Check the number of elements
+		int rectangle = Largeur * Hauteur // To see the product of width vs height
+			if (size < (4 * rectangle)) {
+				printf("You have too little number of pixels vs the size so the program will end");
+				exit(1);
+			};
+		if (size > (4 * rectangle)) {
+			printf("Warning: There's too many pixels so only the first %d of them will be read");
+		};
+		// Check the number of elements to make sure there are not too many
 	// Miguels function calling:
 	unsigned int *Pix = NULL; // Fichier ou se stockent tous les pixels
 	if (read_all_pixels(fp, W, H, &Pix) != 0) {
