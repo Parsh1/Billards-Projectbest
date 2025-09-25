@@ -177,12 +177,11 @@ int main(int argc, char* argv[]) {
 for (int i = 1; i < 29; i++) {
 	values[i - 1] = atoi(argv[1]);
 }
-int Ball_Diameter = values[28];
-if ( Ball_Diameter > 20 || Ball_Diameter < 5) {
+if ( values[28] > 20 || values[28] < 5) { 
 	printf("The ball diameter is wrong impossible to continue");
 	exit(1);
 }
-
+// Values[28] refers to the parameter of Ball_Diameter
 			
 FILE* fp = fopen("Pixmap.bin", "rb"); // Reads file and puts the file reader in binary mode 
 		if (!fp) {						// Makes sure file is there 
