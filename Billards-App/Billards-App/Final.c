@@ -225,8 +225,9 @@ if ( Ball_Diameter > 20 || Ball_Diameter < 5) {
 	}
 	fclose(fp); // Imporant: Je ferme le fichier pixmap.bin puisque tout est lu et stocké
 
-etape_4(Largeur,Pix,argv[1],argv[2],argv[3],argv[4],argv[5],argv[6],argv[7],argv[8],argv[9],argv[10],argv[11],argv[12],argv[13],argv[14],
-         argv[15],argv[16],argv[17],argv[18],argv[19],argv[20],argv[21],argv[22],argv[29]);
+etape_4(Largeur,Pix,values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7], 
+	values[8], values[9], values[10], values[11], values[12], values[13], values[14], values[15], 
+	values[16], values[17], values[18], values[19], values[20], values[21], values[28]);
 
 free(Pix);
 
