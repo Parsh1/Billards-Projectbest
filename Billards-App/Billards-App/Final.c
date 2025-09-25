@@ -178,8 +178,7 @@ for (int i = 1; i < 29; i++) {
 	values[i - 1] = atoi(argv[1]);
 }
 
-int values[28] = Ball_Diameter;
-if ( Ball_Diameter > 20 || Ball_Diameter < 5) {
+if ( values[28] > 20 || values[28] < 5) {
 	printf("The ball diameter is wrong impossible to continue");
 	exit(1);
 }
