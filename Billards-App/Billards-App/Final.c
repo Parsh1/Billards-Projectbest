@@ -191,14 +191,8 @@ if ( Ball_Diameter > 20 || Ball_Diameter < 5) {
 				return 1;
 		}
 
-	int Table[2];						// Add the table from memory allocation here instead, but using this tentatively
-	if ((fread(Table, sizeof(int), 2, fp) != 2) {	// Checks to make sure it has read 2 elements 
-		perror ("Failed to read the width and length");		// Error code
-		fclose(fp);										// Closes file to do further checks before proceeding, however, 
-		return 1;										// this can be combined with the next step later if slow
-	}
-	int Largeur = Table [0];			// Replace with the 0th entry of the malloc table we make
-	int Hauteur = Table [1];			
+	int Largeur = values[0];			// Replace with the 0th entry of the malloc table we make
+	int Hauteur = values[1];			
 
 		if (Largeur > 1000 ||  Largeur < 100 || Hauteur > 1000 || Hauteur < 100) {
 			printf (" The bounds provided are invalid, so the program cannot continue");
