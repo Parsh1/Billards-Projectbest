@@ -185,7 +185,7 @@ if ( Ball_Diameter > 20 || Ball_Diameter < 5) {
 }
 
 			
-	FILE *fp = fopen("Pixmap.bin", "rb") // Reads file and puts the file reader in binary mode 
+FILE* fp = fopen("Pixmap.bin", "rb"); // Reads file and puts the file reader in binary mode 
 		if (!fp) {						// Makes sure file is there 
 			perror("File open failed");	// Message to tell us where the error is
 				return 1;
@@ -202,7 +202,7 @@ if ( Ball_Diameter > 20 || Ball_Diameter < 5) {
 		// The above lines check the bounds for the height and width
 
 		long size = ftell(fp);
-		int rectangle = Largeur * Hauteur // To see the product of width vs height
+		int rectangle = Largeur * Hauteur; // To see the product of width vs height
 			if (size < (4 * rectangle)) {
 				printf("You have too little number of pixels vs the size so the program will end");
 				exit(1);
