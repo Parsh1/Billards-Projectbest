@@ -173,7 +173,7 @@ int main(int argc, char* argv[]) {
 	// The above makes sure we received the correct number of lines for parameters
 
 
-	int values[28];
+	int values[29];
 for (int i = 1; i < 30; i++) {
 	values[i - 1] = atoi(argv[i]);
 }
@@ -188,10 +188,36 @@ FILE* fp = fopen("Pixmap.bin", "rb"); // Reads file and puts the file reader in 
 			perror("File open failed");	// Message to tell us where the error is
 				return 1;
 		}
+		unsigned int Table[2];
+		if (fread(Table, sizeof(unsigned int), 2, fp) != 2) {
+			fprintf(stderr, "Error: Could not read the values for Larguer & Hauteur");
+			fclose(fp);
+			return 1;
+		}
+	int Largeur = Table[0];			// Read from the first 2 values of the binary file
+	int Hauteur = Table[1];			
+	int expected = Largeur * Hauteur;
+	int count = 0;
+	unsigned int temporary;
 
-	int Largeur = values[0];			// Replace with the 0th entry of the malloc table we make
-	int Hauteur = values[1];			
+	while (fread(&temporary, sizeof(unsigned int), 1, fp) == 1) { // The pointer has already read the first 2 elements so count is accurate
+		count++;
+	}
 
+	fseek(fp, 2 * sizeof(unsigned int), SEEK_SET);
+
+	// The above line resets the file pointer to make it go again to the 2nd entry since we read the number of pixels again in the function of read all pixels
+	// This way it should read it properly and not interfere with the second function
+
+	if (count > expected) {
+		printf("You have too many pixels and in this case only %d of them will be read and used\n", expected); // line to make sure correct number of readings
+	};
+	if (count < expected) {
+		printf("Not enough pixels to run the program so it will end we needed %d pixels and instead there are only %d\n",expected, count);
+		exit(1);
+	}
+
+	// The above makes sure we have the correct number of pixels
 		if (Largeur > 1000 ||  Largeur < 100 || Hauteur > 1000 || Hauteur < 100) {
 			printf (" The bounds provided are invalid, so the program cannot continue");
 			exit(1);
@@ -199,16 +225,6 @@ FILE* fp = fopen("Pixmap.bin", "rb"); // Reads file and puts the file reader in 
 
 		// The above lines check the bounds for the height and width
 
-		long size = ftell(fp);
-		int rectangle = Largeur * Hauteur; // To see the product of width vs height
-			if (size < (4 * rectangle)) {
-				printf("You have too little number of pixels vs the size so the program will end");
-				exit(1);
-			};
-		if (size > (4 * rectangle)) {
-			printf("Warning: There's too many pixels so only the first %d of them will be read");
-		};
-		// Check the number of elements to make sure there are not too many
 	// Miguels function calling:
 	unsigned int *Pix = NULL; // Fichier ou se stockent tous les pixels
 	if (read_all_pixels(fp, Largeur, Hauteur, &Pix) != 0) {
