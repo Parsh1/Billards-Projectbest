@@ -188,9 +188,9 @@ FILE* fp = fopen("Pixmap.bin", "rb"); // Reads file and puts the file reader in 
 			perror("File open failed");	// Message to tell us where the error is
 				return 1;
 		}
-		unsigned int Table[2];
+		unsigned int Table[2]; // Fills Table with the values for Largeur and Hauteur
 		if (fread(Table, sizeof(unsigned int), 2, fp) != 2) {
-			fprintf(stderr, "Error: Could not read the values for Larguer & Hauteur");
+			fprintf(stderr, "Error: Could not read the values for Largeur & Hauteur");
 			fclose(fp);
 			return 1;
 		}
