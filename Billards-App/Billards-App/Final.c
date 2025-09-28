@@ -198,7 +198,7 @@ FILE* fp = fopen("Pixmap.bin", "rb"); // Reads file and puts the file reader in 
 	int Hauteur = Table[1];			
 	int expected = Largeur * Hauteur;
 	int count = 0;
-	unsigned int temporary;
+	unsigned int temporary; // unsigned to avoid inconsistencies with the counting
 
 	while (fread(&temporary, sizeof(unsigned int), 1, fp) == 1) { // The pointer has already read the first 2 elements so count is accurate
 		count++;
@@ -240,4 +240,3 @@ etape_4(Largeur,Pix,values[0], values[1], values[2], values[3], values[4], value
 free(Pix);
 
 }
-
