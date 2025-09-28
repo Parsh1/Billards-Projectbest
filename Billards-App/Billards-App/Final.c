@@ -239,8 +239,5 @@ etape_4(Largeur,Pix,values[0], values[1], values[2], values[3], values[4], value
 
 free(Pix);
 
-
-	// Après la partie de Bogdan, important: il faut faire free(Pix) !!!
-
 }
 
