@@ -176,7 +176,7 @@ int main(int argc, char* argv[]) {
 	int values[29];
 for (int i = 1; i < 30; i++) {
 	values[i - 1] = atoi(argv[i]);
-	if (values[i - 1] > 255 || values[i - 1] <= 0); // This makes sure that our atoi is not reading some erroneous values
+	if (values[i - 1] > 255 || values[i - 1] <= 0) // This makes sure that our atoi is not reading some erroneous values
 }
 if ( values[28] > 20 || values[28] < 5) { 
 	printf("The ball diameter is wrong impossible to continue");
